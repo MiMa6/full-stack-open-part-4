@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "Title": "Kokkikoulu",
+  "author": "Seppo Kakkunen",
+  "url": "http://kokkikoulu.com",
+  "likes": 1000
+}
