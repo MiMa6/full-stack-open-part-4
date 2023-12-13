@@ -1,3 +1,4 @@
+### Fake blog 1
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
@@ -6,4 +7,15 @@ Content-Type: application/json
   "author": "Seppo Kakkunen",
   "url": "http://kokkikoulu.com",
   "likes": 1000
+}
+
+### Fake blog 2
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "Title": "Juoksukoulu",
+  "author": "Jaakko Jalkanen",
+  "url": "http://jaakonlenkkipolku.com",
+  "likes": 1
 }
