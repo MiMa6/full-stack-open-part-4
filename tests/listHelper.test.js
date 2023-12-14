@@ -107,3 +107,27 @@ describe('Most likes', () => {
     expect(result).toEqual(blogWithMostLikesFromMultiple);
   });
 });
+
+describe('Most blogs', () => {
+  test('of empty list is {}', () => {
+    const emptyBlog = {};
+    const result = listHelper.mostBlogs(listWithZeroBlog);
+    expect(result).toEqual(emptyBlog);
+  });
+  test('when list has only one blog, equals that', () => {
+    const authorWithMostBlogsFromOne = {
+      author: 'Edsger W. Dijkstra',
+      blogs: 1,
+    };
+    const result = listHelper.mostBlogs(listWithOneBlog);
+    expect(result).toEqual(authorWithMostBlogsFromOne);
+  });
+  test('of bigger list is calculated right', () => {
+    const authorWithMostBlogsFromMultiple = {
+      author: 'Robert C. Martin',
+      blogs: 3,
+    };
+    const result = listHelper.mostBlogs(listWitMultipleBlogs);
+    expect(result).toEqual(authorWithMostBlogsFromMultiple);
+  });
+});
