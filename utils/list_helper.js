@@ -44,9 +44,27 @@ const mostBlogs = (blogs) => {
   console.log(mostBlogsByAuthor);
   return mostBlogsByAuthor;
 };
+
+const mostLikes = (blogs) => {
+  if (blogs.length === 0) {
+    return {};
+  }
+  const groupBlogsByAuthor = _.groupBy(blogs, 'author');
+  const mostLikesByAuthorName = _.maxBy(_.keys(groupBlogsByAuthor), (author) => _.sumBy(groupBlogsByAuthor[author], 'likes'));
+  const numberOfLikesByAuthor = _.sumBy(groupBlogsByAuthor[mostLikesByAuthorName], 'likes');
+
+  const mostLikesByAuthor = {
+    author: mostLikesByAuthorName,
+    likes: numberOfLikesByAuthor,
+  };
+  console.log(mostLikesByAuthor);
+  return mostLikesByAuthor;
+};
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
   mostBlogs,
+  mostLikes,
 };
