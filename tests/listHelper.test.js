@@ -82,7 +82,7 @@ describe('total likes', () => {
   });
 });
 
-describe('Most likes', () => {
+describe('Most likes - Blog', () => {
   test('of empty list is {}', () => {
     const emptyBlog = {};
     const result = listHelper.favoriteBlog(listWithZeroBlog);
@@ -132,7 +132,7 @@ describe('Most blogs', () => {
   });
 });
 
-describe('Most Likes', () => {
+describe('Most Likes - Author', () => {
   test('of empty list is {}', () => {
     const emptyBlog = {};
     const result = listHelper.mostLikes(listWithZeroBlog);
