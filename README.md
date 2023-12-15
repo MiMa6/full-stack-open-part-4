@@ -1,4 +1,4 @@
-# full-stack-open-part-4
+# Full Stack Open - Part 4
 
 ## [Part4a](https://github.com/MiMa6/full-stack-open-part-4/pull/1)
 
