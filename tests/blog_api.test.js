@@ -99,6 +99,41 @@ test('Blog without title or url is not added', async () => {
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length);
 });
 
+test('Blog can be deleted', async () => {
+  const blogsAtstart = await helper.blogsInDb();
+  const blogToDeleteId = blogsAtstart[0].id;
+
+  await api
+    .delete(`/api/blogs/${blogToDeleteId}`)
+    .expect(204);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1);
+});
+
+test('Blog can be modified', async () => {
+  const blogsAtstart = await helper.blogsInDb();
+  const blogToModify = blogsAtstart[0];
+
+  const modifiedBlogInitial = {
+    title: blogToModify.title,
+    author: blogToModify.author,
+    url: blogToModify.url,
+    likes: 222,
+  };
+
+  await api
+    .put(`/api/blogs/${blogToModify.id}`)
+    .send(modifiedBlogInitial)
+    .expect(200);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length);
+
+  const modifiedBlogDb = blogsAtEnd.find((blog) => blog.title === blogToModify.title);
+  expect(modifiedBlogDb.likes).toEqual(222);
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
