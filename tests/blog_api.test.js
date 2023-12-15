@@ -31,6 +31,27 @@ test('Blog posts have unique identifier id', async () => {
   });
 });
 
+test('Successfull creation of blog post', async () => {
+  const newBlog = {
+    title: 'Kokkikoulu',
+    author: 'Seppo Kakkunen',
+    url: 'http://fakekokkikoulu.com',
+    likes: 1000,
+  };
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1);
+
+  const blogTitles = blogsAtEnd.map((blog) => blog.title);
+  expect(blogTitles).toContain('Kokkikoulu');
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
