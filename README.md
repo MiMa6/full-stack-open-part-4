@@ -2,7 +2,7 @@
 
 ## [Part4a](https://github.com/MiMa6/full-stack-open-part-4/pull/1)
 
-### blog list
+### Blog list
 <ul>
   <li>steps 1-2</li>
   <li>(4.1-4.2)</li>
