@@ -72,6 +72,33 @@ test('Blog without likes is added, likes is set as default to 0', async () => {
   expect(addedBlog.likes).toEqual(0);
 });
 
+test('Blog without title or url is not added', async () => {
+  const newBlogNoUrl = {
+    title: 'Lentokoulu',
+    author: 'Leevi Lentokone',
+    likes: 10,
+  };
+
+  const newBlogNoTitle = {
+    author: 'Leevi Lentokone',
+    url: 'http://fakeleevilentaja.com',
+    likes: 10,
+  };
+
+  await api
+    .post('/api/blogs')
+    .send(newBlogNoUrl)
+    .expect(400);
+
+  await api
+    .post('/api/blogs')
+    .send(newBlogNoTitle)
+    .expect(400);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length);
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
