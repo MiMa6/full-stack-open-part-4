@@ -52,6 +52,26 @@ test('Successfull creation of blog post', async () => {
   expect(blogTitles).toContain('Kokkikoulu');
 });
 
+test('Blog without likes is added, likes is set as default to 0', async () => {
+  const newBlog = {
+    title: 'Juoksukoulu',
+    author: 'Jaakko Jalkanen',
+    url: 'http://fakejaakonlenkkipolku.com',
+  };
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/);
+
+  const blogsAtEnd = await helper.blogsInDb();
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1);
+
+  const addedBlog = blogsAtEnd.find((blog) => blog.title === 'Juoksukoulu');
+  expect(addedBlog.likes).toEqual(0);
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
