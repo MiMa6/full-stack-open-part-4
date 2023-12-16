@@ -3,7 +3,7 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "Title": "Kokkikoulu",
+  "title": "Kokkikoulu",
   "author": "Seppo Kakkunen",
   "url": "http://kokkikoulu.com",
   "likes": 1000
@@ -14,7 +14,7 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "Title": "Juoksukoulu",
+  "title": "Juoksukoulu",
   "author": "Jaakko Jalkanen",
   "url": "http://jaakonlenkkipolku.com",
   "likes": 1
