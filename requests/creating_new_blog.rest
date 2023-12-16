@@ -1,6 +1,7 @@
 ### Fake blog 1
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pbWEiLCJpZCI6IjY1N2Q4ZmExNWM5OTM3N2E3MjU1N2JjZSIsImlhdCI6MTcwMjcyNzY1Mn0.tpx5nQEXi76UrAYaRVm5Qft0Awh01gIfb8e60yEeLpQ
 
 {
   "title": "Kokkikoulu",
@@ -12,10 +13,23 @@ Content-Type: application/json
 ### Fake blog 2
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pbWEiLCJpZCI6IjY1N2Q4ZmExNWM5OTM3N2E3MjU1N2JjZSIsImlhdCI6MTcwMjcyNzY1Mn0.tpx5nQEXi76UrAYaRVm5Qft0Awh01gIfb8e60yEeLpQ
 
 {
   "title": "Juoksukoulu",
   "author": "Jaakko Jalkanen",
   "url": "http://jaakonlenkkipolku.com",
   "likes": 1
+}
+
+### Fake blog 3
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11bWEiLCJpZCI6IjY1N2Q4OGM2MzEzNzYzOGMzMjk3YjdkNSIsImlhdCI6MTcwMjcyNzMyMX0.MeFPA3ijrFr1YoagLIvPla0sMToJK3UQnR8eaP6KK8I
+
+{
+  "title": "Life",
+  "author": "Universe",
+  "url": "http://fakeliving.com",
+  "likes": 100
 }

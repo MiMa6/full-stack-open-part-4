@@ -1,0 +1,21 @@
+
+### User 1
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+"username": "Muma",
+"name": "Massu",
+"password": "efnjasnfjknsek"
+}
+
+
+### User 2
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+"username": "Mima",
+"name": "Missu",
+"password": "juustokakku"
+}
