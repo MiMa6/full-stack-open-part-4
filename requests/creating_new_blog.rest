@@ -33,3 +33,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11b
   "url": "http://fakeliving.com",
   "likes": 100
 }
+
+### Fake blog 4
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11bWEiLCJpZCI6IjY1N2Q4OGM2MzEzNzYzOGMzMjk3YjdkNSIsImlhdCI6MTcwMjczNjM0NX0.1c6YGcm1ct0epJQ2WmnkfQomC6C8dC6PX1SKgSzDEaE
+
+{
+  "title": "Water",
+  "author": "sea",
+  "url": "http://fakewatersea.com",
+  "likes": 8
+}
+
+### Fake blog 5
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11bWEiLCJpZCI6IjY1N2Q4OGM2MzEzNzYzOGMzMjk3YjdkNSIsImlhdCI6MTcwMjczNjY1OX0.4quJyK-YOJFdxp-4h21fsoyRrIEEBkDSe0kieDzHgs8
+
+{
+  "title": "Air",
+  "author": "wind",
+  "url": "http://fakewind.com",
+  "likes": 2
+}
