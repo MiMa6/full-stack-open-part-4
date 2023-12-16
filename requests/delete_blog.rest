@@ -1,0 +1,4 @@
+### Delete blog
+DELETE http://localhost:3003/api/blogs/657db9dd092fb1c566136b1f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik11bWEiLCJpZCI6IjY1N2Q4OGM2MzEzNzYzOGMzMjk3YjdkNSIsImlhdCI6MTcwMjczODQwOH0.FsRsLU9GbUJXth57cTC0soDXxSIGXChbAaILEMCeGcg

@@ -12,9 +12,9 @@ blogRouter.get('/', async (request, response) => {
 });
 
 blogRouter.post('/', async (request, response) => {
-  const { body } = request;
+  const { body, token } = request;
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  const decodedToken = jwt.verify(token, process.env.SECRET);
   if (!decodedToken.id) {
     return response.status(401).json({ error: 'token invalid' });
   }
@@ -35,7 +35,24 @@ blogRouter.post('/', async (request, response) => {
 });
 
 blogRouter.delete('/:id', async (request, response) => {
-  await Blog.findByIdAndDelete(request.params.id);
+  const { params, token } = request;
+
+  const decodedToken = jwt.verify(token, process.env.SECRET);
+  if (!decodedToken.id) {
+    return response.status(401).json({ error: 'token invalid' });
+  }
+
+  const blog = await Blog.findById(params.id);
+
+  if (blog === null) {
+    return response.status(400).json({ error: `No blog  with id: ${params.id} in db` });
+  }
+
+  if (blog.user.toString() !== decodedToken.id) {
+    return response.status(401).json({ error: `Only blog creator can delete blog with id: ${params.id}` });
+  }
+
+  await Blog.findByIdAndDelete(params.id);
   response.status(204).end();
 });
 
