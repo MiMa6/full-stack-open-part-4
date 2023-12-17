@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 const jwt = require('jsonwebtoken');
 const blogRouter = require('express').Router();
+const middleware = require('../utils/middleware');
 const logger = require('../utils/logger');
 const Blog = require('../models/blog');
-const User = require('../models/user');
 
 blogRouter.get('/', async (request, response) => {
   const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 });
@@ -11,14 +11,8 @@ blogRouter.get('/', async (request, response) => {
   response.json(blogs);
 });
 
-blogRouter.post('/', async (request, response) => {
-  const { body, token } = request;
-
-  const decodedToken = jwt.verify(token, process.env.SECRET);
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' });
-  }
-  const user = await User.findById(decodedToken.id);
+blogRouter.post('/', middleware.userExtractor, async (request, response) => {
+  const { body, user } = request;
 
   const blog = new Blog({
     title: body.title,
@@ -34,13 +28,8 @@ blogRouter.post('/', async (request, response) => {
   response.status(201).json(savedBlog);
 });
 
-blogRouter.delete('/:id', async (request, response) => {
-  const { params, token } = request;
-
-  const decodedToken = jwt.verify(token, process.env.SECRET);
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' });
-  }
+blogRouter.delete('/:id', middleware.userExtractor, async (request, response) => {
+  const { params, user } = request;
 
   const blog = await Blog.findById(params.id);
 
@@ -48,7 +37,7 @@ blogRouter.delete('/:id', async (request, response) => {
     return response.status(400).json({ error: `No blog  with id: ${params.id} in db` });
   }
 
-  if (blog.user.toString() !== decodedToken.id) {
+  if (blog.user.toString() !== user._id.toString()) {
     return response.status(401).json({ error: `Only blog creator can delete blog with id: ${params.id}` });
   }
 
