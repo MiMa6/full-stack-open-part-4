@@ -27,3 +27,11 @@
   <li>steps 1-2</li>
   <li>(4.13-4.14)</li>
 </ul>
+
+## [Part4d](https://github.com/MiMa6/full-stack-open-part-4/pull/3)
+
+### Bog list expansions
+<ul>
+  <li>steps 3-11</li>
+  <li>(4.15-4.23)</li>
+</ul>
