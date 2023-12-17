@@ -9,8 +9,3 @@ npm-debug.log*
 
 # ENV
 .env
-
-# Tests
-tests/average.test.js
-tests/reverse.test.js
-utils/for_testing.js
